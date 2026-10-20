@@ -1,0 +1,544 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paul Chola Bwembya Mumbi | Cybersecurity Graduate & Analyst</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Cybersecurity graduate specializing in Active Directory, SIEM, OSINT, and Blue Team operations. Portfolio of Paul Chola Bwembya Mumbi.">
+    <meta name="keywords" content="Cybersecurity Analyst, SOC Analyst, Active Directory, SIEM, Azure Sentinel, OSINT, Zambia">
+    <meta name="author" content="Paul Chola Bwembya Mumbi">
+
+    <!-- Styles & Fonts -->
+    <link rel="stylesheet" href="{% static 'portfolio/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+ <body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <a href="#home"><span>&lt;</span>PCBM<span>/&gt;</span></a>
+                </div>
+                <ul class="nav-links" id="primary-navigation">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#certifications">Certifications</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#resume">Resume</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <button class="hamburger" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="primary-navigation">
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <span class="hero-comment">Hello, I'm Paul Chola Bwembya Mumbi</span>
+                    <h1>Paul Chola Bwembya Mumbi</h1>
+                    <h2>IT Support | Cybersecurity Graduate | Active Directory | Python Automation &amp; Data Analytics</h2>
+                    <div class="hero-badges" aria-label="Core cybersecurity areas">
+                        <span>IT Support</span>
+                        <span>Active Directory</span>
+                        <span>Python Automation</span>
+                        <span>Cloud Security</span>
+                    </div>
+                    <p>
+                        Cybersecurity graduate with hands-on IT support experience deploying Android POS systems,
+                        managing Active Directory, and administering user accounts across 36+ satellites at the Food
+                        Reserve Agency. Google certified in Cloud Cybersecurity and IT Automation, seeking IT Support,
+                        SOC Analyst, or entry-level Cybersecurity roles.
+                    </p>
+                    <div class="cta-buttons">
+                        <a href="#contact" class="btn primary-btn">Get In Touch</a>
+                        <a href="#projects" class="btn secondary-btn">View Projects</a>
+                        <a href="{% static 'portfolio/docs/Resume.pdf' %}" class="btn download-btn" target="_blank" download>
+                            <i class="fas fa-download"></i> Resume
+                        </a>
+                    </div>
+                    <div class="social-icons">
+                        <a href="https://www.linkedin.com/in/paul-chola-bwembya-mumbi-096182285" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://github.com/PaulChola" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://tryhackme.com/p/paulchola" target="_blank" rel="noopener noreferrer" aria-label="TryHackMe Profile">
+                            <i class="fas fa-shield-alt"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="hero-image">
+                    <div class="security-graphic">
+                        <div class="shield">
+                            <img src="{% static 'portfolio/assets/profile.png' %}" alt="Paul Chola Bwembya Mumbi" loading="lazy">
+                            <div class="ripple"></div>
+                        </div>
+                        <div class="binary">PAUL CHOLA MUMBI</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>About Me</h2>
+                <div class="underline"></div>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Cybersecurity graduate with hands-on IT support experience deploying Android POS systems, managing Active Directory, and administering user accounts across 36+ satellites at the Food Reserve Agency. I combine technical troubleshooting, automation, and security awareness to support reliable digital operations and improve service delivery.</p>
+                    <p>I am passionate about problem-solving, learning by doing, and building practical solutions that improve productivity and system security. My work includes automation using Python and ADB for Android POS provisioning, and user support across systems that directly support field operations.</p>
+                    <p>With certifications in Google Cloud Cybersecurity and Google IT Automation with Python, I am seeking opportunities in IT Support, SOC Analyst, and entry-level Cybersecurity roles where I can contribute, continue learning, and strengthen security operations.</p>
+                </div>
+                <div class="contact-info">
+                    <div class="contact-item"><i class="fas fa-envelope"></i><span>mumbipaul2026@gmail.com</span></div>
+                    <div class="contact-item"><i class="fas fa-phone"></i><span>+260970838458</span></div>
+                    <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>Kasama, Zambia</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <div class="section-header">
+                <h2>My Skills</h2>
+                <div class="underline"></div>
+            </div>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Security Operations</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item"><span>Splunk</span></div>
+                        <div class="skill-item"><span>Wazuh</span></div>
+                        <div class="skill-item"><span>Azure Sentinel (KQL)</span></div>
+                        <div class="skill-item"><span>Incident Response</span></div>
+                        <div class="skill-item"><span>Threat Detection</span></div>
+                        <div class="skill-item"><span>Risk Management</span></div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Network & Analysis</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item"><span>Wireshark</span></div>
+                        <div class="skill-item"><span>tcpdump</span></div>
+                        <div class="skill-item"><span>Nmap</span></div>
+                        <div class="skill-item"><span>Log Analysis</span></div>
+                        <div class="skill-item"><span>Regex</span></div>
+                        <div class="skill-item"><span>YARA Rules</span></div>
+                        <div class="skill-item"><span>Sigma Rules</span></div>
+                        <div class="skill-item"><span>Malware Analysis</span></div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Threat Intelligence</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item"><span>OSINT</span></div>
+                        <div class="skill-item"><span>MITRE ATT&CK</span></div>
+                        <div class="skill-item"><span>IOC Analysis</span></div>
+                        <div class="skill-item"><span>Threat Hunting</span></div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Vulnerability Management</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item"><span>GVM / OpenVAS</span></div>
+                        <div class="skill-item"><span>Vulnerability Scanning</span></div>
+                        <div class="skill-item"><span>Risk Analysis</span></div>
+                        <div class="skill-item"><span>Security Assessment</span></div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Systems & Infrastructure</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item"><span>Linux (Debian)</span></div>
+                        <div class="skill-item"><span>Active Directory</span></div>
+                        <div class="skill-item"><span>IAM & GPO</span></div>
+                        <div class="skill-item"><span>Cloud VMs</span></div>
+                        <div class="skill-item"><span>SQL</span></div>
+                        <div class="skill-item"><span>Puppet</span></div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Programming & Automation</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item"><span>Python</span></div>
+                        <div class="skill-item"><span>Bash</span></div>
+                        <div class="skill-item"><span>PowerShell</span></div>
+                        <div class="skill-item"><span>Git & GitHub</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <div class="section-header">
+                <h2>Experience</h2>
+                <div class="underline"></div>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>IT Support Assistant Intern (Field Attachment)</h3>
+                        <h4>Food Reserve Agency (FRA), Regional Office - Kasama, Northern Province | Present</h4>
+                        <ul>
+                            <li>Provide first-line technical support for hardware, software, printer, and network issues across the regional office and satellite depots.</li>
+                            <li>Deploy, configure, troubleshoot, and support Android POS devices across 36 satellite depots in Mungwi District.</li>
+                            <li>Developed a Python automation solution using Android Debug Bridge (ADB) to automate Android POS provisioning and APK deployment, reducing manual configuration time and improving deployment consistency.</li>
+                            <li>Support administration of the Crop Management System (CMS), including user account creation, maintenance, troubleshooting, and access management.</li>
+                            <li>Resolve user account mismatches, process staff transfers between satellite depots, and maintain accurate records for retired depot clerks.</li>
+                            <li>Provide end-user support and technical guidance to improve system availability and productivity.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>ECZ Phishing Investigation &amp; Regional Threat Intelligence</h3>
+                        <h4>April - September 2026</h4>
+                        <p><strong>GitHub:</strong> <a href="https://github.com/paulcbmumbi-cyberWorkSpace/Incident-Response" target="_blank" rel="noopener noreferrer">https://github.com/paulcbmumbi-cyberWorkSpace/Incident-Response</a></p>
+                        <ul>
+                            <li>Discovered a GitHub-hosted phishing repository through advanced GitHub search and investigated a fraudulent recruitment website impersonating the Electoral Commission of Zambia (ECZ).</li>
+                            <li>Used OSINT, DNS analysis (<code>nslookup</code>), repository inspection and manual JavaScript review to identify phishing infrastructure and suspected credential-harvesting functionality.</li>
+                            <li>Investigated a broader pattern of suspected government-recruitment impersonation targeting Southern African countries, including Zambia, Zimbabwe, the Democratic Republic of the Congo, Angola and Namibia.</li>
+                            <li>Compiled technical evidence and a formal incident report, submitted abuse reports to GitHub, and documented GitHub Trust &amp; Safety's confirmation of enforcement action in September 2026.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Enterprise Incident Response &amp; Remediation - Cymbal Retail</h3>
+                        <h4>October 2026</h4>
+                        <p><em>Google Cloud Security Case Study (Simulated Incident)</em></p>
+                        <p><strong>GitHub:</strong> <a href="https://github.com/paulcbmumbi-cyberWorkSpace/Incident-Response" target="_blank" rel="noopener noreferrer">https://github.com/paulcbmumbi-cyberWorkSpace/Incident-Response</a></p>
+                        <ul>
+                            <li>Investigated a simulated Google Cloud data breach involving a compromised Compute Engine VM, excessive service-account permissions and exposure of customer card data in BigQuery.</li>
+                            <li>Reviewed Security Command Center findings and PCI DSS 3.2.1 compliance controls, identifying gaps in firewall configuration, logging and access security.</li>
+                            <li>Documented containment and remediation, including restricting SSH/RDP access, removing public Cloud Storage access, and replacing the compromised VM with <code>cc-app-02</code> rebuilt from the <code>cc-app01-snapshot</code>.</li>
+                            <li>Configured the replacement VM with a private IP address, Secure Boot and a dedicated service account, and reviewed remaining security findings and monitoring gaps.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Researcher – Navigation Needs Study</h3>
+                        <h4>Tusekelele Disabled Club | Nov–Dec 2024</h4>
+                        <ul>
+                            <li>Conducted surveys and interviews with visually impaired individuals</li>
+                            <li>Prototyped navigation support tools using TensorFlow Lite, Camera X, and Text-to-Speech</li>
+                            <li>Provided actionable insights to improve assistive technology design for local communities</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="education">
+        <div class="container">
+            <div class="section-header">
+                <h2>Education</h2>
+                <div class="underline"></div>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Bachelor of Cybersecurity</h3>
+                        <h4>University of Zambia | 2021 – 2025</h4>
+                        <h3>Senior Secondary School</h3>
+                        <h4>Chelstone High School | 2012–2014</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="certifications">
+        <div class="container">
+            <div class="section-header">
+                <h2>Certifications</h2>
+                <div class="underline"></div>
+            </div>
+            <div class="certifications-grid">
+                <div class="certification-card">
+                    <div class="certification-logo">
+                        <img src="{% static 'portfolio/assets/google-cybersecurity-professional-certificate-v-2.png' %}" alt="Google Cybersecurity Professional Certificate v.2" loading="lazy">
+                    </div>
+                    <div class="certification-content">
+                        <h3>Google Cybersecurity Professional Certificate v.2</h3>
+                        <p>ITExprience in partnership with Coursera Schorlarship</p>
+                    </div>
+                </div>
+                <div class="certification-card">
+                    <div class="certification-logo">
+                        <img src="{% static 'portfolio/assets/api-security-fundamentals-25-2-hours.png' %}" alt="API Security Fundamentals" loading="lazy">
+                    </div>
+                    <div class="certification-content">
+                        <h3>API Security</h3>
+                        <p>Api Security University</p>
+                    </div>
+                </div>
+                <div class="certification-card">
+                    <div class="certification-logo">
+                        <img src="{% static 'portfolio/assets/google-data-analytics-professional-certificate-v-3.png' %}" alt="Google Data Analytics Professional Certificate" loading="lazy">
+                    </div>
+                    <div class="certification-content">
+                        <h3>Google Data Analytics</h3>
+                        <p>Google</p>
+                    </div>
+                </div>
+                <div class="certification-card">
+                    <div class="certification-logo">
+                        <img src="{% static 'portfolio/assets/google-it-automation-with-python-professional-certi.2.png' %}" alt="Google IT Automation with Python Professional Certificate" loading="lazy">
+                    </div>
+                    <div class="certification-content">
+                        <h3>Python Automation</h3>
+                        <p>Google</p>
+                    </div>
+                </div>
+                <div class="certification-card">
+                    <div class="certification-logo">
+                        <img src="https://images.credly.com/size/680x680/images/505080ad-3731-4b1d-98df-347655a45750/image.png" alt="Google Cloud Cybersecurity Certificate" loading="lazy">
+                    </div>
+                    <div class="certification-content">
+                        <h3>Google Cloud Cybersecurity</h3>
+                        <p>Issued by Google Cloud</p>
+                        <p>Foundational certification focused on cloud security, compliance, incident response, and data protection.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2>Projects</h2>
+                <div class="underline"></div>
+            </div>
+            <div class="projects-grid">
+
+                <!-- Malware Detection ML -->
+                <div class="project-card">
+                    <h3>Malware Detection Machine Learning System</h3>
+                    <p>
+                        A cybersecurity-focused machine learning project that performs static
+                        analysis on executable files and classifies them as malicious or benign
+                        using trained classification models.
+                    </p>
+                    <ul class="project-details">
+                        <li><strong>Tech Stack:</strong> Python, scikit-learn, TensorFlow/Keras, NumPy</li>
+                        <li><strong>Core Features:</strong> CLI scanning, model training, batch analysis</li>
+                        <li><strong>Techniques:</strong> Feature Hashing, Random Forest, Neural Networks</li>
+                        <li><strong>Evaluation:</strong> Accuracy metrics, ROC curves, cross-validation</li>
+                    </ul>
+                    <div class="project-links">
+                        <a href="https://github.com/PaulChola/malware-detection-ml" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-github"></i> View Project
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Cross-Platform PowerShell SQL Telemetry -->
+                <div class="project-card">
+                    <h3>Cross-Platform PowerShell SQL Telemetry</h3>
+                    <p>
+                        PowerShell-based telemetry system that collects system and SQL Server metrics
+                        across Windows and Linux environments. Designed for IT monitoring and automation.
+                    </p>
+                    <ul class="project-details">
+                        <li><strong>Tech Stack:</strong> PowerShell, SQL, Bash</li>
+                        <li><strong>Features:</strong> Cross-platform monitoring, automated reporting</li>
+                        <li><strong>Use Case:</strong> Collects telemetry data for endpoint & database health monitoring</li>
+                    </ul>
+                    <div class="project-links">
+                        <a href="https://github.com/PaulChola/Cross-Platform-PowerShell-SQL-Telemetry" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-github"></i> View Project
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Automate Cybersecurity Tasks with Python -->
+                <div class="project-card">
+                    <h3>Automate Cybersecurity Tasks with Python</h3>
+                    <p>
+                        Python-based automation of cybersecurity tasks such as log analysis, alerting,
+                        and repetitive SOC operations. Part of the Google Cybersecurity Professional Portfolio.
+                    </p>
+                    <ul class="project-details">
+                        <li><strong>Tech Stack:</strong> Python, CSV/JSON, Automation Scripts</li>
+                        <li><strong>Features:</strong> Automates repetitive security tasks, enhances SOC productivity</li>
+                        <li><strong>Use Case:</strong> Helps cybersecurity analysts quickly process logs and alerts</li>
+                    </ul>
+                    <div class="project-links">
+                        <a href="https://github.com/PaulChola/Cyber-security-Portfolio-Project/tree/main/Google-Cybersecurity-Professional-Portfolio/07-Automate-Cybersecurity-Tasks-with-Python" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-github"></i> View Project
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Incident Response -->
+                <div class="project-card">
+                    <h3>Incident Response</h3>
+                    <p>
+                        A practical incident response project focused on identifying security events,
+                        triaging potential threats, documenting findings, and supporting containment
+                        and recovery actions in a structured, analyst-friendly workflow.
+                    </p>
+                    <ul class="project-details">
+                        <li><strong>Focus Area:</strong> Detection, triage, investigation, and response</li>
+                        <li><strong>Use Case:</strong> Supports digital forensics and incident handling workflows</li>
+                        <li><strong>Outcome:</strong> Builds hands-on experience in blue team response operations</li>
+                    </ul>
+                    <div class="project-links">
+                        <a href="https://github.com/paulcbmumbi-cyberWorkSpace/Incident-Response" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-github"></i> View Project
+                        </a>
+                        <a href="{% static 'portfolio/docs/Cymbal_Retail_Final_Incident_Report.docx' %}" target="_blank" rel="noopener noreferrer">
+                            <i class="fas fa-file-word"></i> Final Incident Report
+                        </a>
+                        <a href="{% static 'portfolio/docs/Incident_Response_Case_Study.docx' %}" target="_blank" rel="noopener noreferrer">
+                            <i class="fas fa-file-word"></i> Case Study
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Resume Section -->
+    <section id="resume" class="resume">
+        <div class="container">
+            <div class="section-header">
+                <h2>Resume</h2>
+                <div class="underline"></div>
+            </div>
+            <p>You can view or download my resume below:</p>
+            <a href="{% static 'portfolio/docs/Resume.pdf' %}" class="btn primary-btn" target="_blank" download>
+                <i class="fas fa-download"></i> Download Resume
+            </a>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Get In Touch</h2>
+                <div class="underline"></div>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info-container">
+                    <div class="contact-info-item">
+                        <div class="icon"><i class="fas fa-envelope"></i></div>
+                        <div class="text">
+                            <h3>Email</h3>
+                            <p>mumbipaul2026@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="icon"><i class="fas fa-phone"></i></div>
+                        <div class="text">
+                            <h3>Phone</h3>
+                            <p>+260970838458</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="icon"><i class="fab fa-linkedin"></i></div>
+                        <div class="text">
+                            <h3>LinkedIn</h3>
+                            <p><a href="https://www.linkedin.com/in/paul-chola-mumbi" target="_blank">Connect with me</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form-container">
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn primary-btn">Send Message</button>
+                        <p class="form-note">This opens your email app with a draft. Send it there to complete delivery.</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#projects">Projects</a>
+                <a href="#resume">Resume</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Paul Chola Bwembya Mumbi. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button class="theme-toggle" aria-label="Toggle theme">
+        <i class="fas fa-moon"></i>
+        <i class="fas fa-sun"></i>
+    </button>
+
+    <script src="{% static 'portfolio/script.js' %}"></script>
+</body>
+</html>
