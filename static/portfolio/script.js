@@ -1,165 +1,177 @@
-// DOM Elements
-const header = document.querySelector('header');
-const navLinks = document.querySelector('.nav-links');
-const hamburger = document.querySelector('.hamburger');
-const navLinksItems = document.querySelectorAll('.nav-links li');
-const themeToggle = document.querySelector('.theme-toggle');
-const moonIcon = document.querySelector('.fa-moon');
-const sunIcon = document.querySelector('.fa-sun');
-const contactForm = document.getElementById('contact-form');
+const menuToggle = document.querySelector('.menu-toggle');
+const navigation = document.querySelector('#primary-navigation');
+const filterButtons = document.querySelectorAll('[data-alert-filter]');
+const alertCards = document.querySelectorAll('[data-alert-category]');
+const filterCount = document.querySelector('.filter-count');
+const feedStatus = document.querySelector('#feed-status');
+const feedChecked = document.querySelector('#feed-checked');
+const feedMatchCount = document.querySelector('#feed-match-count');
+const feedScannedCount = document.querySelector('#feed-scanned-count');
+const feedMessage = document.querySelector('#feed-message');
+const phishingResults = document.querySelector('#phishing-results');
+const feedRefresh = document.querySelector('#feed-refresh');
 
-// Header scroll effect
-if (header) {
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            header.classList.add('header-scroll');
-        } else {
-            header.classList.remove('header-scroll');
-        }
-    });
-}
-
-// Mobile Navigation
-if (hamburger && navLinks) {
-    const setNavigationOpen = (isOpen) => {
-        navLinks.classList.toggle('nav-active', isOpen);
-        hamburger.classList.toggle('active', isOpen);
-        hamburger.setAttribute('aria-expanded', String(isOpen));
-        hamburger.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
-        document.body.classList.toggle('no-scroll', isOpen);
+if (menuToggle && navigation) {
+    const setMenuOpen = (isOpen) => {
+        menuToggle.classList.toggle('is-open', isOpen);
+        navigation.classList.toggle('is-open', isOpen);
+        menuToggle.setAttribute('aria-expanded', String(isOpen));
+        menuToggle.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
+        document.body.classList.toggle('menu-open', isOpen);
     };
 
-    hamburger.addEventListener('click', () => {
-        setNavigationOpen(!navLinks.classList.contains('nav-active'));
+    menuToggle.addEventListener('click', () => {
+        setMenuOpen(menuToggle.getAttribute('aria-expanded') !== 'true');
+    });
+
+    navigation.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => setMenuOpen(false));
     });
 
     document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape' && navLinks.classList.contains('nav-active')) {
-            setNavigationOpen(false);
-            hamburger.focus();
+        if (event.key === 'Escape' && menuToggle.getAttribute('aria-expanded') === 'true') {
+            setMenuOpen(false);
+            menuToggle.focus();
+        }
+    });
+
+    window.matchMedia('(min-width: 901px)').addEventListener('change', (event) => {
+        if (event.matches) {
+            setMenuOpen(false);
         }
     });
 }
 
-// Close mobile menu when clicking on a link
-navLinksItems.forEach(item => {
-    item.addEventListener('click', () => {
-        if (navLinks && navLinks.classList.contains('nav-active')) {
-            navLinks.classList.remove('nav-active');
-            if (hamburger) {
-                hamburger.classList.remove('active');
-                hamburger.setAttribute('aria-expanded', 'false');
-                hamburger.setAttribute('aria-label', 'Open navigation');
-            }
-            document.body.classList.remove('no-scroll');
-        }
+const updateVisibleAlerts = (category) => {
+    let visibleCount = 0;
+
+    alertCards.forEach((card) => {
+        const isVisible = category === 'all' || card.dataset.alertCategory === category;
+        card.hidden = !isVisible;
+        visibleCount += Number(isVisible);
+    });
+
+    if (filterCount) {
+        filterCount.textContent = `${visibleCount} ${visibleCount === 1 ? 'example' : 'examples'}`;
+    }
+};
+
+filterButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+        const category = button.dataset.alertFilter;
+        filterButtons.forEach((filterButton) => {
+            const isActive = filterButton === button;
+            filterButton.classList.toggle('is-active', isActive);
+            filterButton.setAttribute('aria-pressed', String(isActive));
+        });
+        updateVisibleAlerts(category);
     });
 });
 
-// Theme toggle functionality
-if (themeToggle) {
-    themeToggle.addEventListener('click', () => {
-        document.body.classList.toggle('light-theme');
+updateVisibleAlerts('all');
 
-        if (document.body.classList.contains('light-theme')) {
-            if (moonIcon) moonIcon.style.display = 'none';
-            if (sunIcon) sunIcon.style.display = 'block';
-        } else {
-            if (moonIcon) moonIcon.style.display = 'block';
-            if (sunIcon) sunIcon.style.display = 'none';
-        }
+const formatFeedTime = (timestamp) => {
+    const date = new Date(timestamp);
+    if (Number.isNaN(date.getTime())) {
+        return 'Unavailable';
+    }
+    return new Intl.DateTimeFormat(undefined, {
+        dateStyle: 'medium',
+        timeStyle: 'short',
+    }).format(date);
+};
 
-        const theme = document.body.classList.contains('light-theme') ? 'light' : 'dark';
-        localStorage.setItem('theme', theme);
-    });
-}
+const renderPhishingEntries = (entries) => {
+    phishingResults.replaceChildren();
 
-// Load saved theme preference
-document.addEventListener('DOMContentLoaded', () => {
-    const savedTheme = localStorage.getItem('theme');
-
-    if (savedTheme === 'light') {
-        document.body.classList.add('light-theme');
-        if (moonIcon) moonIcon.style.display = 'none';
-        if (sunIcon) sunIcon.style.display = 'block';
+    if (!entries.length) {
+        return;
     }
 
-    const animateElements = () => {
-        const sections = document.querySelectorAll('section');
+    const list = document.createElement('ul');
+    list.className = 'feed-list';
 
-        sections.forEach(section => {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('section-animate');
-                    }
-                });
-            }, { threshold: 0.1 });
+    entries.forEach((entry) => {
+        const item = document.createElement('li');
+        item.className = 'feed-entry';
 
-            observer.observe(section);
+        const domain = document.createElement('code');
+        domain.textContent = entry.domain;
+
+        const indicator = document.createElement('span');
+        indicator.className = 'feed-indicator';
+        indicator.textContent = entry.indicator;
+
+        const safetyNote = document.createElement('span');
+        safetyNote.className = 'feed-entry-note';
+        safetyNote.textContent = 'Not a verified attribution';
+
+        item.append(domain, indicator, safetyNote);
+        list.append(item);
+    });
+
+    phishingResults.append(list);
+};
+
+const loadPhishingFeed = async () => {
+    if (!feedStatus) {
+        return;
+    }
+
+    feedRefresh.disabled = true;
+    feedRefresh.textContent = 'Checking…';
+    feedStatus.dataset.status = 'loading';
+    feedStatus.textContent = 'Checking public feed…';
+    feedMessage.textContent = 'Loading Zambia-indicator entries from the public feed.';
+    feedMessage.hidden = false;
+
+    try {
+        const response = await fetch('/api/zambia-phishing/', {
+            headers: { Accept: 'application/json' },
+            cache: 'no-store',
         });
-    };
-
-    animateElements();
-});
-
-// Handle contact form submission
-if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-
-        const name = document.getElementById('name').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const subject = document.getElementById('subject').value.trim();
-        const message = document.getElementById('message').value.trim();
-
-        // Simple form validation
-        if (!name || !email || !subject || !message) {
-            alert('Please fill out all fields');
-            return;
+        if (!response.ok) {
+            throw new Error(`Feed request failed (${response.status}).`);
         }
 
-        const recipient = 'mumbipaul2026@gmail.com';
-        const emailBody = `Name: ${name}\nEmail: ${email}\n\n${message}`;
-        const mailtoUrl = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
+        const data = await response.json();
+        feedStatus.dataset.status = data.status;
+        feedStatus.textContent = data.status === 'live'
+            ? 'Feed available'
+            : data.status === 'stale'
+                ? 'Showing last successful snapshot'
+                : 'Feed unavailable';
+        feedChecked.textContent = formatFeedTime(data.checked_at);
+        feedChecked.dateTime = data.checked_at;
+        feedMatchCount.textContent = String(data.match_count);
+        feedScannedCount.textContent = new Intl.NumberFormat().format(data.feed_entries_scanned);
+        renderPhishingEntries(data.entries);
 
-        window.location.href = mailtoUrl;
-    });
-}
-
-// Add smooth scrolling to all links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-
-        const targetId = this.getAttribute('href');
-        if (targetId === '#') return; // Skip if href is just "#"
-
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-            window.scrollTo({
-                top: targetElement.offsetTop - 80, // Adjust for header height
-                behavior: 'smooth'
-            });
+        if (data.status === 'unavailable' || data.status === 'stale') {
+            feedMessage.textContent = data.error;
+            feedMessage.hidden = false;
+        } else if (data.match_count === 0) {
+            feedMessage.textContent = 'No entries with the configured Zambia indicators were found in this feed snapshot.';
+            feedMessage.hidden = false;
+        } else {
+            feedMessage.textContent = `Showing ${data.entries.length} of ${data.match_count} matching domains.`;
+            feedMessage.hidden = false;
         }
-    });
-});
+    } catch (error) {
+        feedStatus.dataset.status = 'unavailable';
+        feedStatus.textContent = 'Feed unavailable';
+        feedMessage.textContent = 'Could not load the phishing feed. Please try again later.';
+        feedMessage.hidden = false;
+        phishingResults.replaceChildren();
+        console.error('Could not load the Zambia phishing feed:', error);
+    } finally {
+        feedRefresh.disabled = false;
+        feedRefresh.textContent = 'Check feed';
+    }
+};
 
-// Add typing effect to the binary in hero section
-const binaryElement = document.querySelector('.binary');
-if (binaryElement) {
-    const originalText = binaryElement.innerText;
-    binaryElement.innerText = '';
-
-    let i = 0;
-    const typeWriter = () => {
-        if (i < originalText.length) {
-            binaryElement.innerText += originalText.charAt(i);
-            i++;
-            setTimeout(typeWriter, 50);
-        }
-    };
-
-    // Start typing effect when page loads
-    setTimeout(typeWriter, 1000);
+if (feedRefresh && feedStatus) {
+    feedRefresh.addEventListener('click', loadPhishingFeed);
+    loadPhishingFeed();
+    window.setInterval(loadPhishingFeed, 15 * 60 * 1000);
 }
